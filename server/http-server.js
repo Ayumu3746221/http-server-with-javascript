@@ -31,11 +31,11 @@ const server = net.createServer((socket) => {
   function processBuffer() {
     while (true) {
       if (parsingState === "HEADERS") {
-        const bouddaryIndex = buffer.indexOf("\r\n\r\n");
-        if (bouddaryIndex === -1) return;
+        const boundaryIndex = buffer.indexOf("\r\n\r\n");
+        if (boundaryIndex === -1) return;
 
         const headerString = buffer
-          .subarray(0, bouddaryIndex)
+          .subarray(0, boundaryIndex)
           .toString("utf-8");
         currentHeaders = parseHeaders(headerString);
 
@@ -50,7 +50,7 @@ const server = net.createServer((socket) => {
           return;
         }
 
-        buffer = buffer.subarray(bouddaryIndex + 4);
+        buffer = buffer.subarray(boundaryIndex + 4);
 
         if (te === "chunked") {
           isChunked = true;

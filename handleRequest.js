@@ -1,5 +1,5 @@
 export function handleRequest(headers, bodyData, socket) {
-  const responseBody = "Presistent connection processed.\n";
+  const responseBody = "Persistent connection processed.\n";
   const response =
     "HTTP/1.1 200 OK\r\n" +
     "Content-Type: text/plain\r\n" +
